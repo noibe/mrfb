@@ -1,0 +1,121 @@
+/*!
+ * Mowe Webtal Project v0.9.0 (http://gomowe.org/)
+ * Copyright 2013-2015 Noibe Developers
+ * Licensed under MIT (https://github.com/noibe/villa/blob/master/LICENSE)
+*/
+
+@media (min-width: 1200px) {
+	.navbar .full {
+		pading-right: 200px;
+	}
+}
+
+.block-1 .navbar {
+	background-color: #f5f5f5;
+}
+
+.block-3 .navbar {
+	background-color: #004d40;
+}
+
+.block-1 .navbar footer .menu {
+	color: #66bb6a;
+}
+
+.block-1 .navbar .brand,
+.block-2 .navbar .brand {
+	color: #66bb6a;
+}
+
+.block-1 .navbar #bg path,
+.block-2 .navbar #bg path {
+	stroke: #cddc39 !important;
+}
+
+.block-3 .navbar .brand {
+	color: #fff;
+}
+
+.block-3 .navbar #bg path {
+	stroke: #fff !important;
+}
+
+@media (max-width: 768px) {
+	.navbar .brand {
+		color: #66bb6a;
+	}
+
+	#bg path {
+		stroke: #cddc39 !important;
+	}
+}
+
+#bars {
+	width: 25px;
+	height: 25px;
+	padding-top: 5px;
+}
+
+#bars line {
+	fill: none;
+	stroke: #ffffff;
+	stroke-width: 160;
+	stroke-miterlimit: 10;
+}
+
+#bg {
+	height: 40px;
+	transition: all .1s linear;
+}
+
+#bg path {
+	fill: none;
+	stroke: #ffffff;
+	stroke-width: 60;
+	stroke-linecap: round;
+	stroke-miterlimit: 10;
+}
+
+.hero {
+	/*background-image: url("../img/wt01.jpg");*/
+}
+
+
+
+body > footer {
+	width: 100%;
+	padding-bottom: 300px !important;
+}
+
+/* TEMPORARY USE */
+#prices .pricelist {
+	opacity: 0;
+	transition: all 1s ease;
+}
+
+#prices .pricelist .content {
+	display: none;
+}
+
+#prices.slide-1 .pricelist:nth-child(1),
+#prices.slide-2 .pricelist:nth-child(2),
+#prices.slide-3 .pricelist:nth-child(3) {
+	opacity: 1;
+	transition: all 1s ease;
+}
+
+#prices.slide-1 .pricelist:nth-child(1) .content,
+#prices.slide-2 .pricelist:nth-child(2) .content,
+#prices.slide-3 .pricelist:nth-child(3) .content {
+	display: -webkit-box;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	flex-wrap: wrap;
+}
+#prices {
+	padding-bottom: 100px;
+}
