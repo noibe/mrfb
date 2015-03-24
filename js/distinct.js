@@ -1,5 +1,5 @@
 /**
- * Villa Distinct v0.8.0 (http://getvilla.org/)
+ * Villa Distinct v0.9.0 (http://getvilla.org/)
  * Copyright 2013-2015 Noibe Developers
  * Licensed under MIT (https://github.com/noibe/villa/blob/master/LICENSE)
  */
@@ -63,7 +63,7 @@
 			if (settings.doDistinct) {
 				doDistinct(this);
 			}
-			
+
 
 		}
 
@@ -75,7 +75,7 @@
 
 			// Find a index number at selfAction array and put on array 'self'
 			// Obs: test for a fastest method to loop the array using the 'l' var
-			for (var i = settings.selfAction.length; --i;) {
+			for (var i = settings.selfAction.length; i--;) {
 
 				// Internal Loop to pass in all index of SelfAction Array
 				for (var j = 0; j < settings.selfAction[i].index.length; j++) {
