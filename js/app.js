@@ -2,64 +2,60 @@
  * Created by Eduardo Barros on 29/11/2014.
  */
 
-$('.block .nav .item').distinct({
-	plusOne: true,
-	prefix: 'item',
-	target: '.block'
-}, 'click');
+var Session;
 
-if ("geolocation" in navigator) {
-	console.log('ok');
-} else {
-	console.log('not ok');
+testSession(Session);
+
+$.ajax({
+	cache: false,
+	success: function (data) {
+		session = data;
+		testSession(session);
+
+		var newElement = addElement('div', 'hello world', 'blue font-white');
+		for (var i = 7; --i; ) addElement('div', 'Hello!', 'star', newElement);
+
+		$('.star').distinct({
+			plusOne: true,
+			selfAction: {
+				action: function() {
+					console.log('oi');
+				},
+				index: [4, 1],
+				passParam: false
+			}
+		});
+	},
+	url: 'i'
+});
+
+function testSession(Session) {
+	if (Session) console.log('ok'); else console.log('not ok');
 }
 
-/*navigator.geolocation.getCurrentPosition(function(position) {
-	alert(position.coords.latitude + ' : ' + position.coords.longitude);
-});*/
+function addElement (element, content, classValue, target, before) {
 
-function addStyleSheetRules (rules) {
+	// Create the new element
+	if (!element) element = 'div';
+	var newDiv = document.createElement(element);
 
-	var styleEl = document.createElement('style'),
-		styleSheet;
+	// Add the class to the new element
+	if (classValue) newDiv.setAttribute('class', classValue);
 
-	// Append style element to head
-	document.head.appendChild(styleEl);
-
-	// Grab style sheet
-	styleSheet = styleEl.sheet;
-
-	for (var i = 0, rl = rules.length; i < rl; i++) {
-
-		var j = 1,
-			rule = rules[i],
-			selector = rules[i][0],
-			propStr = '';
-
-		// If the second argument of a rule is an array of arrays, correct our variables.
-		if (Object.prototype.toString.call(rule[1][0]) === '[object Array]') {
-			rule = rule[1];
-			j = 0;
-		}
-
-		for (var pl = rule.length; j < pl; j++) {
-			var prop = rule[j];
-			propStr += prop[0] + ':' + prop[1] + (prop[2] ? ' !important' : '') + ';\n';
-		}
-
-		// Insert CSS Rule
-		styleSheet.insertRule(selector + '{' + propStr + '}', styleSheet.cssRules.length);
+	// Test if has content to add on the new element
+	if (content) {
+		// get the content
+		var newContent = document.createTextNode(content);
+		// Append the content
+		newDiv.appendChild(newContent);
 	}
-}
 
-/*
-addStyleSheetRules([
-	['body', // Also accepts a second argument as an array of arrays instead
-		['color', 'red'],
-		['background-color', 'green', true] // 'true' for !important rules
-	],
-	['.myClass',
-		['background-color', 'yellow']
-	]
-]);
-*/
+	if (!before) before = null;
+	if (!target) target = document.body;
+
+	// Add the newly created element and its content into the DOM
+	target.insertBefore(newDiv, before);
+
+	return newDiv;
+
+}

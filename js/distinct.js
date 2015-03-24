@@ -24,6 +24,14 @@
 
 		var currentIndex;
 
+		// Convert selfActions Object to Array
+		// Happens when the user put a single object on selfAction var
+		if (typeof settings.selfAction == 'object') {
+			var self = settings.selfAction;
+			settings.selfAction = Array();
+			settings.selfAction.push(self);
+		}
+
 		// Add Touch and Mouse Listeners to elements
 		this.each(function() {
 			if (settings.touchEvents) {
@@ -67,7 +75,7 @@
 
 			// Find a index number at selfAction array and put on array 'self'
 			// Obs: test for a fastest method to loop the array using the 'l' var
-			for (var i = 0, l = settings.selfAction.length; i < l; i++) {
+			for (var i = settings.selfAction.length; --i;) {
 
 				// Internal Loop to pass in all index of SelfAction Array
 				for (var j = 0; j < settings.selfAction[i].index.length; j++) {
